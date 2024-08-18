@@ -1,6 +1,6 @@
 import Button from "./components/Buttons/Button"
 import TextInput from "./components/textInput/TextInput"
-import TextInputForm from "./components/textInputForm/TextInputForm"
+import TextinputContainer from "./components/textInputForm/TextInputContainer"
 
 function App(){
   return (
@@ -12,7 +12,7 @@ function App(){
     <Button text="3 " buttontype="button"style="style3" onClickHandler={()=>{console.log("3st button")}}/>
     <Button text="8 " buttontype="button" /> */}
     {/* <TextInput label={"hello world"} value="" onChange={()=>{}}/> */}
-    <TextInputForm onSubmit={(value)=>{console.log("value from hidden form of onSubmit" ,value)}}/>
+    <TextinputContainer onSubmit={(value)=>{console.log("value from hidden form of onSubmit" ,value)}}/>
     </div>
   )
 }

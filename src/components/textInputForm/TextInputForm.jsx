@@ -1,25 +1,9 @@
-import { useState } from "react";
+
 import Button from "../Buttons/Button";
 import TextInput from "../textInput/TextInput";
 
-function TextInputForm({onSubmit}){
+function TextInputForm({handleFormSubmit,handleTextInputOnChange,value,inputType,setInputType}){
 
-    const [value,setValue]= useState('');
-    const [inputType , setInputType]=useState('password')
-
-    function handleFormSubmit(event){
-event.preventDefault();
-console.log("form submitted",value);
-onSubmit?.(value); //if on submit is defined we will call it with value
-
-    }
-
-    function handleTextInputOnChange(event){
-        console.log("on change handled");
-        console.log(event.target.value);
-        setValue(event.target.value)
-
-    }
    
     return (
         <form className="flex items-end" onSubmit={handleFormSubmit}>
@@ -37,15 +21,17 @@ onSubmit?.(value); //if on submit is defined we will call it with value
             <div className="flex">
                     <Button
                     text="OK"
-                    type="submit"
+                    buttontype="submit"
+                    style="style1"
+                    
                     
                     />
                 </div>
 
-            <div className="flex">
+            <div className="flex" >
                 <Button
                 text={inputType==='password' ? 'show':'hide'}
-                type="submit"
+                buttontype="button"
                 onClickHandler={()=>setInputType(inputType==='password' ? 'text':'password')}
                 />
                 
