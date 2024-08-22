@@ -6,9 +6,9 @@ import LetterButton from "../../LetterButton/LetterButton";
 function PlayGame(){
     const navigate=useNavigate();
 
-    function submitHandler(){
-navigate('/start')
-    }
+//     function submitHandler(){
+// navigate('/start')
+//     }
     // let arr=[1,2,3,4,5]
     // let [arr,setArr]=useState([-2,10,2,6,1,9])
 
@@ -17,7 +17,12 @@ navigate('/start')
     //     setArr(sorrt)
     // }
 
+const [usedLetter,setUsedLetters]=useState([]);
 
+
+const handleLetterClick=function(letter){
+setUsedLetters([...usedLetter,letter])
+}
     return (
         <>
         {/* <ul className="list-disc ml-5">{arr.map((e,index)=><li key={index}>{e}</li>)}</ul> */}
@@ -25,14 +30,14 @@ navigate('/start')
         <div>
             
             <h1>play game</h1>
-            <MaskedText text={"humble"} usedLetter={['b','e']}/>
+            <MaskedText text={"humble"} usedLetter={usedLetter} />
             <hr />
-            <Link to={"/start"}>start game</Link>
-            <TextinputContainer onSubmit={submitHandler}/>
+            <Link to={"/start"} className="text-blue-600 underline hover:bg-blue-800">start game</Link>
+            {/* <TextinputContainer onSubmit={submitHandler}/> */}
             {/* <button  onClick={sortArray}>sort</button> */}
 
             
-            <LetterButton usedLetters={['b','e']}/>
+            <LetterButton text={"humble"} usedLetters={usedLetter} onLetterClick={handleLetterClick}/>
             <hr />
            
         </div>
