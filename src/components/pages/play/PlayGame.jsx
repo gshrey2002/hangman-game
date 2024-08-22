@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import TextinputContainer from "../../textInputForm/TextInputContainer"
 import { useState } from "react";
 import MaskedText from "../../maskedText/MaskedText";
+import LetterButton from "../../LetterButton/LetterButton";
 function PlayGame(){
     const navigate=useNavigate();
 
@@ -25,9 +26,15 @@ navigate('/start')
             
             <h1>play game</h1>
             <MaskedText text={"humble"} usedLetter={['b','e']}/>
+            <hr />
             <Link to={"/start"}>start game</Link>
             <TextinputContainer onSubmit={submitHandler}/>
             {/* <button  onClick={sortArray}>sort</button> */}
+
+            
+            <LetterButton usedLetters={['b','e']}/>
+            <hr />
+           
         </div>
         </>
       
