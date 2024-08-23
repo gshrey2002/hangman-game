@@ -3,6 +3,8 @@ import TextinputContainer from "../../textInputForm/TextInputContainer"
 import { useState } from "react";
 import MaskedText from "../../maskedText/MaskedText";
 import LetterButton from "../../LetterButton/LetterButton";
+import HangManImg from "/Users/pw/react/hangman/src/components/HangMan/HangMan.jsx"
+
 function PlayGame(){
     const navigate=useNavigate();
 
@@ -21,8 +23,14 @@ const [usedLetter,setUsedLetters]=useState([]);
 const location=useLocation();
 const wordSelected=location.state?.WordSelected
 
-
+const [step,setStep]=useState(0)
 const handleLetterClick=function(letter){
+    if(wordSelected.toUpperCase().includes(letter)){
+        console.log("correct");
+    }else{
+        console.log("Incorrect");
+        setStep(step+1)
+    }
 setUsedLetters([...usedLetter,letter])
 }
     return (
@@ -37,12 +45,21 @@ setUsedLetters([...usedLetter,letter])
             <Link to={"/start"} className="text-blue-600 underline hover:bg-blue-800">start game</Link>
             {/* <TextinputContainer onSubmit={submitHandler}/> */}
             {/* <button  onClick={sortArray}>sort</button> */}
+<div className='flex justify-between items-center'>
+            <div className="basis-2/4">
 
-            
             <LetterButton text={wordSelected} usedLetters={usedLetter} onLetterClick={handleLetterClick}/>
+            </div>
+            <div className="basis-2/4 flex justify-center"> 
+                 <HangManImg step={step}/>
+            </div>
+            </div>
+
             <hr />
-           
+            
+            
         </div>
+      
         </>
       
         
