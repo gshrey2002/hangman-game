@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import TextinputContainer from "../../textInputForm/TextInputContainer"
 import { useState } from "react";
 import MaskedText from "../../maskedText/MaskedText";
@@ -18,6 +18,8 @@ function PlayGame(){
     // }
 
 const [usedLetter,setUsedLetters]=useState([]);
+const location=useLocation();
+const wordSelected=location.state?.WordSelected
 
 
 const handleLetterClick=function(letter){
@@ -30,14 +32,14 @@ setUsedLetters([...usedLetter,letter])
         <div>
             
             <h1>play game</h1>
-            <MaskedText text={"humble"} usedLetter={usedLetter} />
+            <MaskedText text={wordSelected} usedLetter={usedLetter} />
             <hr />
             <Link to={"/start"} className="text-blue-600 underline hover:bg-blue-800">start game</Link>
             {/* <TextinputContainer onSubmit={submitHandler}/> */}
             {/* <button  onClick={sortArray}>sort</button> */}
 
             
-            <LetterButton text={"humble"} usedLetters={usedLetter} onLetterClick={handleLetterClick}/>
+            <LetterButton text={wordSelected} usedLetters={usedLetter} onLetterClick={handleLetterClick}/>
             <hr />
            
         </div>

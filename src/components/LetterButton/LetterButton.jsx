@@ -6,13 +6,26 @@ const alphabet=new Array(26).fill('').map((e,index)=>
 function LetterButton({text,usedLetters,onLetterClick}){
     const originalText =new Set(text.toUpperCase().split(''));
     const selectedLetter=new Set(usedLetters.join('').toUpperCase().split(''))
-    const buttonStyle=function(letter){
-        if(selectedLetter.has(letter)){
-            return `bg-red-600 ${originalText.has(letter) ? `border-green-700 bg-green-600` :` border-[#000] border-4` } hover-bg-blue-600`
-        }else{
-            return `bg-blue-600 border-blue-800 hover:bg-blue-800 `
+    // const buttonStyle=function(letter){
+    //     if(selectedLetter.has(letter)){
+    //         return `bg-red-600 ${originalText.has(letter) ? `border-green-700 bg-green-600` :` border-[#000] border-4` } hover-bg-blue-600`
+    //     }else{
+    //         return `bg-blue-600 border-blue-800 hover:bg-blue-800 `
+    //     }
+    // }
+    function buttonStyle(letter) {
+        if (selectedLetter.has(letter)) {
+            if (originalText.has(letter)) {
+                return `bg-green-600 border-green-700`; // Correct letter
+            } else {
+                return `bg-red-600 border-[#000] border-4`; // Incorrect letter
+            }
+        } else {
+            return `bg-blue-600 border-blue-800 hover:bg-blue-800`;
         }
     }
+    
+
 
     function handleClick(event){
 const character=event.target.value;
